@@ -2,12 +2,50 @@ import React from 'react';
 import logo from '../assets/images/logo.png';
 import Container from "../components/Container.jsx";
 import {useTranslation} from "react-i18next";
-import {FaEnvelope, FaFacebook, FaInstagram, FaLocationArrow, FaPhoneAlt, FaYoutube} from "react-icons/fa";
-import {Link} from "react-router-dom";
+import {FaEnvelope, FaFacebook, FaInstagram, FaLocationArrow, FaPhoneAlt, FaTelegram, FaYoutube} from "react-icons/fa";
+import {Link, useLocation} from "react-router-dom";
 
 const Header = () => {
     const { t } = useTranslation();
+    const location = useLocation();
 
+    const items = [
+        {
+            id: 1,
+            label: "Biz haqimizda",
+            url: "/about-us",
+        },
+        {
+            id: 2,
+            label: "Kurslar",
+            url: "/courses",
+        },
+        {
+            id: 3,
+            label: "Joylar",
+            url: "/locations",
+        },
+        {
+            id: 4,
+            label: "Bloglar",
+            url: "/blogs",
+        },
+        {
+            id: 5,
+            label: "Franshiza",
+            url: "/franchise",
+        },
+        {
+            id: 6,
+            label: "Karyera",
+            url: "/careers",
+        },
+        {
+            id: 7,
+            label: "Aloqa",
+            url: "/contact",
+        }
+    ]
     return (
         <header>
             <div className='bg-purple text-white'>
@@ -15,17 +53,22 @@ const Header = () => {
                     <div className="flex justify-between items-center">
                         <ul className="flex items-center divide-x divide-gray-500">
                             <li>
-                                <button className="hover:bg-orange p-3 cursor-pointer">
+                                <button className="hover:bg-orange p-3">
                                     <FaFacebook style={{fontSize: 20}} />
                                 </button>
                             </li>
                             <li>
-                                <button className="hover:bg-orange p-3 cursor-pointer">
+                                <button className="hover:bg-orange p-3">
                                     <FaInstagram style={{fontSize: 20}} />
                                 </button>
                             </li>
                             <li>
-                                <button className="hover:bg-orange p-3 cursor-pointer">
+                                <button className="hover:bg-orange p-3">
+                                    <FaTelegram style={{fontSize: 20}} />
+                                </button>
+                            </li>
+                            <li>
+                                <button className="hover:bg-orange p-3">
                                     <FaYoutube style={{fontSize: 20}} />
                                 </button>
                             </li>
@@ -33,22 +76,22 @@ const Header = () => {
                         <div>
                             <ul className="flex items-center divide-x divide-gray-500">
                                 <li>
-                                    <button className="hover:bg-orange p-3 cursor-pointer flex items-center">
+                                    <Link to="/locations" className="hover:bg-orange p-3 cursor-pointer flex items-center">
                                         <FaLocationArrow  style={{fontSize: 20}}/>
                                         <span className="ml-3">{t("Joylar")}</span>
-                                    </button>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <button className="hover:bg-orange p-3 cursor-pointer flex items-center">
+                                    <Link to='mailto:contact@fastrackids.uz' className="hover:bg-orange p-3 cursor-pointer flex items-center">
                                         <FaEnvelope   style={{fontSize: 20}}/>
                                         <span className="ml-3">{t("contact@fastrackids.uz")}</span>
-                                    </button>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <button className="hover:bg-orange p-3 cursor-pointer flex items-center">
+                                    <Link to='tel:+998555083777' className="hover:bg-orange p-3 cursor-pointer flex items-center">
                                         <FaPhoneAlt style={{fontSize: 20}}/>
                                         <span className="ml-3">{t("+998 555 083 777")}</span>
-                                    </button>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -63,45 +106,22 @@ const Header = () => {
                         </Link>
                         <div className='flex items-center space-x-8'>
                             <ul className='flex items-center space-x-6 font-medium'>
-                                <li>
-                                    <Link to="/about-us" className='border-b-2 border-transparent hover:border-b-2 hover:border-orange py-3 cursor-pointer'>
-                                        {t("Biz haqimizda")}
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/courses" className='border-b-2 border-transparent hover:border-b-2 hover:border-orange py-3 cursor-pointer'>
-                                        {t("kurslar")}
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/" className='border-b-2 border-transparent hover:border-b-2 hover:border-orange py-3 cursor-pointer'>
-                                        {t("Joylar")}
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/" className='border-b-2 border-transparent hover:border-b-2 hover:border-orange py-3 cursor-pointer'>
-                                        {t("Bloglar")}
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/" className='border-b-2 border-transparent hover:border-b-2 hover:border-orange py-3 cursor-pointer'>
-                                        {t("Franshiza")}
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/" className='border-b-2 border-transparent hover:border-b-2 hover:border-orange py-3 cursor-pointer'>
-                                        {t("Karyera")}
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/" className='border-b-2 border-transparent hover:border-b-2 hover:border-orange py-3 cursor-pointer'>
-                                        {t("Aloqa")}
-                                    </Link>
-                                </li>
+                                {
+                                    items?.map(item => {
+                                        return (
+                                            <li key={item?.id}>
+                                                <Link to={item?.url}
+                                                      className={`border-b-2 ${location?.pathname === item?.url ? 'border-orange text-orange' : 'border-transparent'} hover:border-b-2 hover:border-orange hover:text-orange transition py-3 cursor-pointer`}>
+                                                    {t(item?.label)}
+                                                </Link>
+                                            </li>
+                                        )
+                                    })
+                                }
                             </ul>
-                            <button className='bg-orange text-white rounded-lg p-4'>
+                            <Link to='/test-your-child' className='bg-orange text-white rounded-lg p-4'>
                                 {t("EPIF baholash")}
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </Container>

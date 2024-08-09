@@ -5,6 +5,7 @@ import img3 from '../../../assets/images/ftk-despre-noi-invatare.webp';
 import {useTranslation} from "react-i18next";
 import Container from "../../../components/Container.jsx";
 import {FaArrowAltCircleRight} from "react-icons/fa";
+import {MyImage} from "../../../services/utils/index.jsx";
 
 const AboutUsContainer = () => {
     const { t } = useTranslation();
@@ -26,13 +27,13 @@ const AboutUsContainer = () => {
                             </p>
                         </div>
                     </div>
-                    <img src={img1} alt="img1" width={580}/>
+                    <MyImage image={{alt: 'img1', src: img1, width: 580}}/>
                 </div>
             </Container>
-            <div className='bg-gray-50 py-16'>
+            <div className='bg-gray-100 py-16'>
                 <Container>
                     <div className='flex items-center justify-between'>
-                        <img src={img2} alt="img2" width={580}/>
+                        <MyImage image={{alt: 'img2', src: img2, width: 580}}/>
                         <div className='w-1/2'>
                             <div>
                                 <h1 className='text-[26px] font-bold '>{t("Qiziqish")}</h1>
@@ -84,7 +85,7 @@ const AboutUsContainer = () => {
                             </p>
                         </div>
                     </div>
-                    <img src={img3} alt="img3" width={580}/>
+                    <MyImage image={{alt: 'img3', src: img3, width: 580}}/>
                 </div>
             </Container>
             <div className='bg-orange text-white text-center py-16'>

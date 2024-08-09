@@ -4,6 +4,7 @@ import Container from "../../../components/Container.jsx";
 import img1 from "../../../assets/images/ftk-programe.webp";
 import img2 from "../../../assets/images/ftk-programe-2.webp";
 import Courses from "../components/Courses.jsx";
+import {MyImage} from "../../../services/utils/index.jsx";
 
 const CoursesContainer = () => {
     const { t } = useTranslation();
@@ -14,7 +15,7 @@ const CoursesContainer = () => {
                     <h3>{t("Biz har bir bola muvaffaqiyatga erishish potentsiali bilan tug'ilishiga ishonamiz. FasTracKids® dasturlari farzandingizning porloq kelajak uchun zarur bo'lgan umrbod ta'lim ko'nikmalarini rivojlantiradi!")}</h3>
                 </div>
                 <div className='flex items-center justify-between py-16'>
-                    <img src={img1} alt="img1" width={580}/>
+                    <MyImage image={{alt: 'img1', src: img1, width: 580}}/>
                     <div className='w-2/4'>
                         <p className='mt-6 mb-4'>
                             {t("Mutaxassislarning ta'kidlashicha, 21-asrda o'rganish qobiliyati juda muhim, " +
@@ -33,7 +34,7 @@ const CoursesContainer = () => {
                     </div>
                 </div>
             </Container>
-            <div className='bg-gray-50 py-16'>
+            <div className='bg-gray-100 py-16'>
                 <Container>
                     <div className='flex items-center justify-between py-16'>
                         <div className='w-1/2'>
@@ -51,7 +52,7 @@ const CoursesContainer = () => {
                                     "va ular hech qachon unutmaydigan tajriba yaratishga yordam bermoqchimiz!")}
                             </p>
                         </div>
-                        <img src={img2} alt="img2" width={580}/>
+                        <MyImage image={{alt: 'img2', src: img2, width: 580}}/>
                     </div>
                 </Container>
             </div>
