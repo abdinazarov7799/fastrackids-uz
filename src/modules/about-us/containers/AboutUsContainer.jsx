@@ -98,7 +98,7 @@ const AboutUsContainer = () => {
                     </p>
                     <button className="flex items-center mx-auto mt-14 py-4 px-8 bg-purple rounded-lg hover:bg-white hover:text-black transition">
                         <span className="mr-6">{t("Batafsil ma'lumot oling")}</span>
-                        <FaArrowAltCircleRight style={{width: 16}} />
+                        <FaArrowAltCircleRight />
                     </button>
                 </Container>
             </div>

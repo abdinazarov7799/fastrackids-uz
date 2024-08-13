@@ -16,7 +16,7 @@ const Course = ({course}) => {
                 <button
                     className="flex items-center py-2 text-white px-8 bg-purple rounded-lg hover:bg-orange transition">
                     <span className="mr-6">{t("Batafsil ma'lumot oling")}</span>
-                    <FaArrowAltCircleRight style={{width: 16}}/>
+                    <FaArrowAltCircleRight />
                 </button>
             </div>
         </div>

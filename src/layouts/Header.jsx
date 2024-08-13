@@ -2,7 +2,16 @@ import React from 'react';
 import logo from '../assets/images/logo.png';
 import Container from "../components/Container.jsx";
 import {useTranslation} from "react-i18next";
-import {FaEnvelope, FaFacebook, FaInstagram, FaLocationArrow, FaPhoneAlt, FaTelegram, FaYoutube} from "react-icons/fa";
+import {
+    FaEnvelope,
+    FaFacebook,
+    FaHome,
+    FaInstagram,
+    FaLocationArrow,
+    FaPhoneAlt,
+    FaTelegram,
+    FaYoutube
+} from "react-icons/fa";
 import {Link, useLocation} from "react-router-dom";
 
 const Header = () => {
@@ -11,38 +20,43 @@ const Header = () => {
 
     const items = [
         {
+            id: 0,
+            label: <FaHome style={{fontSize: 20}} />,
+            url: "/",
+        },
+        {
             id: 1,
-            label: "Biz haqimizda",
+            label: t("Biz haqimizda"),
             url: "/about-us",
         },
         {
             id: 2,
-            label: "Kurslar",
+            label: t("Kurslar"),
             url: "/courses",
         },
         {
             id: 3,
-            label: "Joylar",
+            label: t("Joylar"),
             url: "/locations",
         },
         {
             id: 4,
-            label: "Bloglar",
+            label: t("Bloglar"),
             url: "/blogs",
         },
         {
             id: 5,
-            label: "Franshiza",
+            label: t("Franshiza"),
             url: "/franchise",
         },
         {
             id: 6,
-            label: "Karyera",
+            label: t("Karyera"),
             url: "/careers",
         },
         {
             id: 7,
-            label: "Aloqa",
+            label: t("Aloqa"),
             url: "/contact",
         }
     ]
@@ -53,22 +67,22 @@ const Header = () => {
                     <div className="flex justify-between items-center">
                         <ul className="flex items-center divide-x divide-gray-500">
                             <li>
-                                <button className="hover:bg-orange p-3">
+                                <button className="hover:bg-orange transition p-3">
                                     <FaFacebook style={{fontSize: 20}} />
                                 </button>
                             </li>
                             <li>
-                                <button className="hover:bg-orange p-3">
+                                <button className="hover:bg-orange transition p-3">
                                     <FaInstagram style={{fontSize: 20}} />
                                 </button>
                             </li>
                             <li>
-                                <button className="hover:bg-orange p-3">
+                                <button className="hover:bg-orange transition p-3">
                                     <FaTelegram style={{fontSize: 20}} />
                                 </button>
                             </li>
                             <li>
-                                <button className="hover:bg-orange p-3">
+                                <button className="hover:bg-orange transition p-3">
                                     <FaYoutube style={{fontSize: 20}} />
                                 </button>
                             </li>
@@ -76,19 +90,19 @@ const Header = () => {
                         <div>
                             <ul className="flex items-center divide-x divide-gray-500">
                                 <li>
-                                    <Link to="/locations" className="hover:bg-orange p-3 cursor-pointer flex items-center">
+                                    <Link to="/locations" className="hover:bg-orange transition p-3 cursor-pointer flex items-center">
                                         <FaLocationArrow  style={{fontSize: 20}}/>
                                         <span className="ml-3">{t("Joylar")}</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to='mailto:contact@fastrackids.uz' className="hover:bg-orange p-3 cursor-pointer flex items-center">
+                                    <Link to='mailto:contact@fastrackids.uz' className="hover:bg-orange transition p-3 cursor-pointer flex items-center">
                                         <FaEnvelope   style={{fontSize: 20}}/>
                                         <span className="ml-3">{t("contact@fastrackids.uz")}</span>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to='tel:+998555083777' className="hover:bg-orange p-3 cursor-pointer flex items-center">
+                                    <Link to='tel:+998555083777' className="hover:bg-orange transition p-3 cursor-pointer flex items-center">
                                         <FaPhoneAlt style={{fontSize: 20}}/>
                                         <span className="ml-3">{t("+998 555 083 777")}</span>
                                     </Link>
@@ -112,7 +126,7 @@ const Header = () => {
                                             <li key={item?.id}>
                                                 <Link to={item?.url}
                                                       className={`border-b-2 ${location?.pathname === item?.url ? 'border-orange text-orange' : 'border-transparent'} hover:border-b-2 hover:border-orange hover:text-orange transition py-3 cursor-pointer`}>
-                                                    {t(item?.label)}
+                                                    {item?.label}
                                                 </Link>
                                             </li>
                                         )
